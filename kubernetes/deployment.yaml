@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: class-manager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: class-manager
+  template:
+    metadata:
+      labels:
+        app: class-manager
+    spec:
+      containers:
+        - name: class-container
+          image: didin8080/class-manager:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: EXTRA_ALLOWED_HOSTS
+              value: |
+                a7d2f5480726a45148921a809870da87-275944914.eu-north-1.elb.amazonaws.com,
+                35.169.38.193
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+      imagePullSecrets:
+        - name: regcred
+

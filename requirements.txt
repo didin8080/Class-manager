@@ -1,0 +1,16 @@
+asgiref==3.9.1
+beautifulsoup4==4.13.4
+cffi==1.15.1
+Django==5.2.4
+django-bootstrap4==1.1.1
+django-misaka==0.2.1
+django-utils-six==2.0
+houdini.py==0.1.0
+misaka==2.1.1
+pillow==11.3.0
+pycparser==2.22
+Pygments==2.19.2
+pytz==2025.2
+soupsieve==2.7
+sqlparse==0.5.3
+typing_extensions==4.14.1
