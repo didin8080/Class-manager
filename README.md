@@ -32,29 +32,29 @@ source venv/bin/activate
 
 Install Dependencies
 
-    ```bash
-    pip install cffi==1.15.1
+```bash
+pip install cffi==1.15.1
 
-    pip install misaka django-misaka
-    pip install django-bootstrap4 beautifulsoup4 pytz Pygments cffi pycparser soupsieve sqlparse
+pip install misaka django-misaka
+pip install django-bootstrap4 beautifulsoup4 pytz Pygments cffi pycparser soupsieve sqlparse
 
-    python3 -m pip install django-bootstrap4==1.1.1
-    python3 -m pip install django-bootstrap4
+python3 -m pip install django-bootstrap4==1.1.1
+python3 -m pip install django-bootstrap4
 
-    sudo apt update
-    sudo apt install build-essential libffi-dev python3-dev
-    python3 -m pip install misaka
+sudo apt update
+sudo apt install build-essential libffi-dev python3-dev
+python3 -m pip install misaka
 
-    pip install cffi==1.15.1 misaka django-misaka django-bootstrap4 beautifulsoup4 pytz Pygments pycparser soupsieve sqlparse
+pip install cffi==1.15.1 misaka django-misaka django-bootstrap4 beautifulsoup4 pytz Pygments pycparser soupsieve sqlparse
 
-    pip install django-utils-six
+pip install django-utils-six
 
-    pip install pillow
-    ```
+pip install pillow
+```
 
-    ```bash
-    sed -i 's/cffi==1.14.0/cffi==1.15.1/' requirements.txt
-    ```
+```bash
+sed -i 's/cffi==1.14.0/cffi==1.15.1/' requirements.txt
+```
 replaces cffi==1.14.0 with cffi==1.15.1 directly inside the requirements.txt file using sed's substitution command.
 
 create and install requirements.txt
