@@ -134,7 +134,6 @@ source venv/bin/activate
 
 
 ```bash
-```bash
 pip install cffi==1.15.1
 
 pip install misaka django-misaka
