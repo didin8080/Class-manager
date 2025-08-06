@@ -1075,31 +1075,37 @@ nano deployment.yaml
 Paste it inside
 
 ```bash
-FROM python:3.11-slim
-
-# Install gcc and dev dependencies needed for building wheels
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    build-essential \
-    python3-dev \
-    libffi-dev \
- && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-COPY requirements.txt /app/
-
-RUN pip install --upgrade pip \
- && pip install --no-cache-dir -r requirements.txt
-
-COPY . /app/
-
-EXPOSE 8000
-
-# Optional: set non-root user here
-# RUN adduser --disabled-password appuser && chown -R appuser /app
-# USER appuser
-
-CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: class-manager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: class-manager
+  template:
+    metadata:
+      labels:
+        app: class-manager
+    spec:
+      containers:
+        - name: class-container
+          image: didin8080/class-manager:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: EXTRA_ALLOWED_HOSTS
+              value: |
+                a7d2f5480726a45148921a809870da87-275944914.eu-north-1.elb.amazonaws.com,
+                35.169.38.193
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+      imagePullSecrets:
+        - name: regcred
 ```
 
 
